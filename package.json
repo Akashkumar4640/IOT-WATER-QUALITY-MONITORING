@@ -1,0 +1,13 @@
+{
+  "name": "iot-water-quality-system-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Root workspace proxy for IoT Water Quality Analyzer",
+  "scripts": {
+    "dev": "npm --prefix \"IOT PROJECT\" run dev",
+    "dev:client": "npm --prefix \"IOT PROJECT/client\" run dev",
+    "dev:server": "npm --prefix \"IOT PROJECT/server\" run dev",
+    "simulate": "npm --prefix \"IOT PROJECT\" run simulate",
+    "simulate:tds": "npm --prefix \"IOT PROJECT\" run simulate:tds"
+  }
+}

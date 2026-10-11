@@ -1,0 +1,16 @@
+{
+  "name": "iot-water-quality-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack IoT pH Water Quality and Content Analyzer",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "dev:client": "npm --prefix client run dev",
+    "dev:server": "npm --prefix server run dev",
+    "start:client": "npm --prefix client start",
+    "start:server": "npm --prefix server start",
+    "simulate": "node scripts/simulate_esp32.js",
+    "simulate:tds": "node scripts/simulate_esp8266_tds.js",
+    "test:tds": "node scripts/test_tds_api.js"
+  }
+}
