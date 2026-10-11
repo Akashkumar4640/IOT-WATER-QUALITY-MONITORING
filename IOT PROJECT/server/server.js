@@ -53,19 +53,39 @@ app.get('/api/health', async (req, res) => {
   });
 });
 
-// Root route
-app.get('/', (req, res) => {
-  res.json({
-    message: 'IoT pH Water Quality & Content Analyzer Server is Running',
-    version: '1.0.4-PROD',
-    documentation: '/api/health'
+// Serve compiled frontend dashboard if built (e.g. Render, production)
+const fs = require('fs');
+const path = require('path');
+const clientDist = path.resolve(__dirname, '../client/dist');
+const hasClientDist = fs.existsSync(clientDist);
+
+if (hasClientDist) {
+  app.use(express.static(clientDist));
+} else {
+  // Fallback root route if client is not built
+  app.get('/', (req, res) => {
+    res.json({
+      message: 'IoT pH Water Quality & Content Analyzer Server is Running',
+      version: '1.0.4-PROD',
+      documentation: '/api/health'
+    });
   });
-});
+}
 
 // 404 handler for unmatched API routes
 app.use('/api/*', (req, res) => {
   ResponseHelper.error(res, `API endpoint '${req.originalUrl}' does not exist`, 404, 'NOT_FOUND');
 });
+
+// Single Page Application (SPA) catch-all route for frontend navigation
+if (hasClientDist) {
+  app.get('*', (req, res, next) => {
+    if (req.originalUrl.startsWith('/api') || req.originalUrl.startsWith('/socket.io')) {
+      return next();
+    }
+    res.sendFile(path.join(clientDist, 'index.html'));
+  });
+}
 
 // Centralized error handling middleware
 app.use(errorHandler);
@@ -102,6 +122,9 @@ async function startServer() {
   }
 }
 
-startServer();
+// Only start the HTTP listener if not running as a Vercel serverless function
+if (!process.env.VERCEL) {
+  startServer();
+}
 
-module.exports = { app, server };
+module.exports = { app, server, startServer };

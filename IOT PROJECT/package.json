@@ -9,6 +9,8 @@
     "dev:server": "npm --prefix server run dev",
     "start:client": "npm --prefix client start",
     "start:server": "npm --prefix server start",
+    "build": "npm --prefix client run build",
+    "start": "node server/server.js",
     "simulate": "node scripts/simulate_esp32.js",
     "simulate:tds": "node scripts/simulate_esp8266_tds.js",
     "test:tds": "node scripts/test_tds_api.js"

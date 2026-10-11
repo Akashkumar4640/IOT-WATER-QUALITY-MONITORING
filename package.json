@@ -7,7 +7,24 @@
     "dev": "npm --prefix \"IOT PROJECT\" run dev",
     "dev:client": "npm --prefix \"IOT PROJECT/client\" run dev",
     "dev:server": "npm --prefix \"IOT PROJECT/server\" run dev",
+    "build": "npm --prefix \"IOT PROJECT/server\" install && npm --prefix \"IOT PROJECT/client\" install && npm --prefix \"IOT PROJECT/client\" run build",
+    "build:client": "npm --prefix \"IOT PROJECT/client\" install && npm --prefix \"IOT PROJECT/client\" run build",
+    "build:server": "npm --prefix \"IOT PROJECT/server\" install",
+    "render:build": "npm --prefix \"IOT PROJECT/server\" install && npm --prefix \"IOT PROJECT/client\" install && npm --prefix \"IOT PROJECT/client\" run build",
+    "render:start": "npm --prefix \"IOT PROJECT/server\" start",
+    "start": "npm --prefix \"IOT PROJECT/server\" start",
+    "test:tds": "node \"IOT PROJECT/scripts/test_tds_api.js\"",
     "simulate": "npm --prefix \"IOT PROJECT\" run simulate",
     "simulate:tds": "npm --prefix \"IOT PROJECT\" run simulate:tds"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.2.0"
   }
 }

@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: iot-water-quality-system
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm run render:build
+    startCommand: npm run render:start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000

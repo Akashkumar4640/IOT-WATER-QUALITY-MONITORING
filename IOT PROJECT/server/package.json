@@ -12,6 +12,7 @@
     "csv-writer": "^1.6.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "iot-water-quality-system-workspace": "file:../..",
     "mqtt": "^5.5.2",
     "pdfkit": "^0.15.0",
     "socket.io": "^4.7.5",
